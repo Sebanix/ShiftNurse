@@ -16,6 +16,9 @@ def autenticacion_login(request):
             dv = form.cleaned_data['dv']
             password = form.cleaned_data['password']
 
+            print(f"Rut: {rut}-{dv}")
+            print(f"Contraseña: {password}")
+
             if rut == '12345678' and dv == '9' and password == '123456':
                 return redirect('/dashboard')
             else:
