@@ -8,4 +8,4 @@ class Actividad:
         self.accion = accion
 
     def __str__(self):
-        return f'{self.accion}' + ":" + f'{self.name}'
+        return f'{self.accion.name}' + " : " + f'{self.name}'
