@@ -1,0 +1,105 @@
+{% extends "layout.html" %}
+{% load static %}
+{% block content %}
+    <div class="m-3 d-flex justify-content-center">
+        <div>
+            <h1 class="text-center">Funcionario</h1>
+        </div>
+    </div>
+
+    <div id="user_list" class="card d-flex m-3 justify-content-center">
+        <table class="table">
+            <thead class="thead-light">
+            <tr>
+                <th scope="col">Nombre</th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td colspan="6">Sebastián Astudillo</td>
+                <td><a class="fas fa-edit text-warning"></a></td>
+                <td><a class="fas fa-trash text-danger"></a></td>
+            </tr>
+            <tr>
+                <td colspan="6">Simón Gallegos</td>
+                <td><a class="fas fa-edit text-warning"></a></td>
+                <td><a class="fas fa-trash text-danger"></a></td>
+            </tr>
+            </tbody>
+        </table>
+
+    </div>
+
+    <div class="pt-4">
+        <form method="POST">
+            {% csrf_token %}
+
+            <div class="form-group rut-container mb-2">
+                <div class="rut-input">
+                    <label for="rut">RUT:</label>
+                    <input type="text" class="form-control" id="rut" name="rut" maxlength="8" required>
+                    {% for error in form.rut.errors %}
+                        <div class="invalid-feedback">{{ error }}</div>
+                    {% endfor %}
+                </div>
+                <div class="rut-dv">
+                    <label for="dv"> </label>
+                    <input type="text" class="form-control" id="dv" name="dv" maxlength="1" required>
+                </div>
+            </div>
+
+            <div class="form-group mb-2">
+                <label for="password">Nombre:</label>
+                <input type="text" class="form-control" id="nombre">
+                {% for error in form.nombre.errors %}
+                    <div class="invalid-feedback">{{ error }}</div>
+                {% endfor %}
+            </div>
+
+            <div class="form-group mb-2">
+                <label for="password">Area:</label>
+                <select class="custom-select form-control" id="area">
+                    <option selected>Seleccione...</option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                </select>
+                {% for error in form.area.errors %}
+                    <div class="invalid-feedback">{{ error }}</div>
+                {% endfor %}
+            </div>
+
+            <div class="form-group mb-2">
+                <label for="password">Tipo:</label>
+                <select class="custom-select form-control" id="area">
+                    <option selected>Seleccione...</option>
+                    <option value="1">Enfermeria</option>
+                    <option value="2">Supervisor</option>
+                    <option value="3">Administrador</option>
+                </select>
+                {% for error in form.area.errors %}
+                    <div class="invalid-feedback">{{ error }}</div>
+                {% endfor %}
+            </div>
+
+            <div class="form-group mb-5">
+                <label for="password">Contraseña:</label>
+                <input type="text" class="form-control" id="password">
+                {% for error in form.password.errors %}
+                    <div class="invalid-feedback">{{ error }}</div>
+                {% endfor %}
+            </div>
+            <div class="text-center mb-5 only-btn">
+                <a href="{% url 'login' %}" class="btn btn-primary primary-bg">Registrar</a>
+            </div>
+        </form>
+    </div>
+
+{% endblock %}

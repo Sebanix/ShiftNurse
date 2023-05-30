@@ -1,0 +1,67 @@
+{% extends "layout.html" %}
+{% load static %}
+{% block content %}
+    <div class="m-3 d-flex justify-content-center">
+        <div>
+            <h1 class="text-center">Acciones</h1>
+        </div>
+    </div>
+
+    <div id="estacion_list" class="card d-flex m-3 justify-content-center">
+        <table class="table">
+            <thead class="thead-light">
+            <tr>
+                <th scope="col">Acción</th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td colspan="6">Revisar</td>
+                <td><a class="fas fa-edit text-warning"></a></td>
+                <td><a class="fas fa-trash text-danger"></a></td>
+            </tr>
+            <tr>
+                <td colspan="6">Cambiar</td>
+                <td><a class="fas fa-edit text-warning"></a></td>
+                <td><a class="fas fa-trash text-danger"></a></td>
+            </tr>
+            <tr>
+                <td colspan="6">Programar</td>
+                <td><a class="fas fa-edit text-warning"></a></td>
+                <td><a class="fas fa-trash text-danger"></a></td>
+            </tr>
+            <tr>
+                <td colspan="6">Realizar</td>
+                <td><a class="fas fa-edit text-warning"></a></td>
+                <td><a class="fas fa-trash text-danger"></a></td>
+            </tr>
+            </tbody>
+        </table>
+
+    </div>
+
+    <div class="pt-4">
+        <form method="POST">
+            {% csrf_token %}
+
+            <div class="form-group mb-5">
+                <label for="password">Acción:</label>
+                <input type="text" class="form-control" id="nombre">
+                {% for error in form.nombre.errors %}
+                    <div class="invalid-feedback">{{ error }}</div>
+                {% endfor %}
+            </div>
+            <div class="text-center mb-5 only-btn">
+                <a href="{% url 'dashboard' %}" class="btn btn-primary primary-bg">Guardar</a>
+            </div>
+        </form>
+    </div>
+
+{% endblock %}

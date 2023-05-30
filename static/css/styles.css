@@ -1,0 +1,52 @@
+@import url('https://fonts.googleapis.com/css2?family=Dongle:wght@400;700&display=swap');
+
+.testbg {
+    background: red;
+    min-height: 100%;
+}
+
+h1 {
+    font-family: 'Dongle', sans-serif;
+    font-size: 5rem;
+    margin: 0px;
+}
+
+html {
+    height: 100%;
+}
+
+.login {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+.login img {
+    width: 40%;
+    margin: 0px;
+    padding: 0px;
+}
+
+.rut-container {
+    display: flex;
+    align-items: center;
+}
+
+.rut-input {
+    width: 80%;
+}
+
+.rut-dv {
+    width: 20%;
+    margin-left: 10px;
+}
+
+.primary-bg{
+    background: #42C8C6;
+    border: #006060;
+}
+.only-btn .primary-bg:hover{
+    background: #006060;
+    border: #42C8C6;
+}

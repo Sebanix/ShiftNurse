@@ -1,0 +1,86 @@
+{% extends "layout.html" %}
+{% load static %}
+{% block content %}
+    <div class="m-3 d-flex justify-content-center">
+        <div>
+            <h1 class="text-center">Dashboard</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-6 col-md-3 mb-2">
+            <div class="card p-2">
+                <h4>Turnos</h4>
+                <p>Horario: 08:00 - 14:00</p>
+                <a href="{% url 'turno' %}" class="btn btn-success">Cambiar Turno</a>
+            </div>
+        </div>
+
+        <div class="col-sm-6 col-md-3 mb-2">
+            <div class="card p-2">
+                <h4>TO DO</h4>
+                <ul>
+                    <li>
+                        <div class="d-flex justify-content-between mb-1">
+                            Revisar | Signos Vitales <span class="badge badge-secondary">S01 - C12</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="d-flex justify-content-between mb-1">
+                            Revisar | Signos Vitales <span class="badge badge-info">S03 - C05</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="d-flex justify-content-between mb-1">
+                            Cambiar | Medicación <span class="badge badge-info">S03 - C05</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="d-flex justify-content-between mb-1">
+                            Cambiar | Medicación <span class="badge badge-info">S03 - C07</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="d-flex justify-content-between mb-1">
+                            Programar | Cirugía <span class="badge badge-info">S08 - C04</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="d-flex justify-content-between mb-1">
+                            Realizar | Limpieza <span class="badge badge-info">S02 - C05</span>
+                        </div>
+                    </li>
+                </ul>
+                <a href="{% url 'registrar' %}" class="btn btn-success mb-2">Registrar Actividad</a>
+                <a href="{% url 'todo' %}" class="btn btn-secondary">Mostrar TO DO</a>
+            </div>
+        </div>
+
+        <div class="col-sm-6 col-md-3 mb-2">
+            <div class="card p-2">
+                <h4>Resumen</h4>
+                <div class="row px-2 my-4">
+                    <div class="col-4">
+                        <div class="card bg-info d-flex justify-content-center mx-1 w-100">
+                        <div class="text-center text-white">Tareas</div>
+                        <div class="text-center text-white">15</div>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="card bg-warning d-flex justify-content-center mx-1 w-100">
+                        <div class="text-center text-white">Por Hacer</div>
+                        <div class="text-center text-white">10</div>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="card bg-success d-flex justify-content-center mx-1 w-100">
+                        <div class="text-center text-white">Terminada</div>
+                        <div class="text-center text-white">5</div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+{% endblock %}

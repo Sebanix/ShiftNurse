@@ -1,0 +1,137 @@
+{% extends "layout.html" %}
+{% load static %}
+{% block content %}
+    <div class="m-3 d-flex justify-content-center">
+        <div>
+            <h1 class="text-center">Registrar</h1>
+        </div>
+    </div>
+
+    <div id="registrar_list" class="card d-flex m-3 justify-content-center">
+        <table class="table">
+            <thead class="thead-light">
+            <tr>
+                <th scope="col">Actividades</th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td colspan="7">
+                    Revisar | Signos Vitales <span class="badge badge-secondary">S01 - C12</span>
+                </td>
+                <td><a class="fas fa-trash text-danger"></a></td>
+            </tr>
+            <tr>
+                <td colspan="7">
+                    Revisar | Signos Vitales <span class="badge badge-secondary">S01 - C12</span>
+                </td>
+                <td><a class="fas fa-trash text-danger"></a></td>
+            </tr>
+            <tr>
+                <td colspan="7">
+                    Revisar | Signos Vitales <span class="badge badge-secondary">S01 - C12</span>
+                </td>
+                <td><a class="fas fa-trash text-danger"></a></td>
+            </tr>
+            <tr>
+                <td colspan="7">
+                    Revisar | Signos Vitales <span class="badge badge-secondary">S01 - C12</span>
+                </td>
+                <td><a class="fas fa-trash text-danger"></a></td>
+            </tr>
+            <tr>
+                <td colspan="7">
+                    Revisar | Signos Vitales <span class="badge badge-secondary">S01 - C12</span>
+                </td>
+                <td><a class="fas fa-trash text-danger"></a></td>
+            </tr>
+
+            </tbody>
+        </table>
+
+    </div>
+
+    <div class="pt-4">
+        <form method="POST">
+            {% csrf_token %}
+
+            <div class="form-group mb-2">
+                <label for="accion">Acción:</label>
+                <select class="custom-select form-control" id="accion">
+                    <option selected>Seleccione...</option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                </select>
+                {% for error in form.accion.errors %}
+                    <div class="invalid-feedback">{{ error }}</div>
+                {% endfor %}
+            </div>
+
+            <div class="form-group mb-2">
+                <label for="actividad">Actividad:</label>
+                <select class="custom-select form-control" id="actividad">
+                    <option selected>Seleccione...</option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                </select>
+                {% for error in form.actividad.errors %}
+                    <div class="invalid-feedback">{{ error }}</div>
+                {% endfor %}
+            </div>
+
+            <div class="form-group mb-2">
+                <label for="estacion">Estación:</label>
+                <select class="custom-select form-control" id="estacion">
+                    <option selected>Seleccione...</option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                </select>
+                {% for error in form.estacion.errors %}
+                    <div class="invalid-feedback">{{ error }}</div>
+                {% endfor %}
+            </div>
+
+            <div class="form-group mb-2">
+                <label for="sala">Sala:</label>
+                <select class="custom-select form-control" id="sala">
+                    <option selected>Seleccione...</option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                </select>
+                {% for error in form.sala.errors %}
+                    <div class="invalid-feedback">{{ error }}</div>
+                {% endfor %}
+            </div>
+
+            <div class="form-group mb-5">
+                <label for="camilla">Camilla:</label>
+                <select class="custom-select form-control" id="camilla">
+                    <option selected>Seleccione...</option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                </select>
+                {% for error in form.camilla.errors %}
+                    <div class="invalid-feedback">{{ error }}</div>
+                {% endfor %}
+            </div>
+
+
+            <div class="text-center mb-5 only-btn">
+                <a href="{% url 'dashboard' %}" class="btn btn-primary primary-bg">Crear</a>
+            </div>
+        </form>
+    </div>
+
+{% endblock %}
