@@ -63,7 +63,7 @@
                             <select class="custom-select form-control" id="area">
                                 <option value="-1" selected>Seleccione...</option>
                                 {% for area in areas %}
-                                    <option value="{{ area.id }}">{{ area.name }}</option>
+                                    <option value="{{ area.codigo }}">{{ area.area }}</option>
                                 {% endfor %}
                             </select>
                             {% for error in form.area.errors %}

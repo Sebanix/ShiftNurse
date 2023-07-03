@@ -1,0 +1,89 @@
+# AREAS
+
+CREATE TABLE AREA(
+    codigo INT PRIMARY KEY NOT NULL AUTO_INCREMENT, #1
+    area VARCHAR(50) NOT NULL,                      #PEDIATRIA
+    leyenda VARCHAR(50) NOT NULL                    #PD01
+);
+
+CREATE TABLE SALA(
+    codigo INT PRIMARY KEY NOT NULL AUTO_INCREMENT, #1
+    sala VARCHAR(50) NOT NULL,                      #SALA 1
+    leyenda VARCHAR(50) NOT NULL,                   #S001
+    fk_area INT,
+    CONSTRAINT fk_sala_id_area FOREIGN KEY (fk_area) REFERENCES AREA (codigo)
+);
+
+CREATE TABLE CAMILLA(
+    codigo INT PRIMARY KEY NOT NULL AUTO_INCREMENT, #1
+    camilla VARCHAR(50) NOT NULL,                   #CAMILLA 1
+    leyenda VARCHAR(50) NOT NULL,                   #C01
+    fk_sala INT,
+    CONSTRAINT fk_camilla_id_sala FOREIGN KEY (fk_sala) REFERENCES SALA (codigo)
+);
+
+# USUARIO
+
+CREATE TABLE TIPO_USUARIO (
+    id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,     #1
+    tipo VARCHAR(50) NOT NULL                       #ADMINISTRADOR
+);
+
+CREATE TABLE HORARIO (
+    id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,     #1
+    descripcion VARCHAR(50) NOT NULL,               #MAÑANA
+    entrada TIME NOT NULL,                          #08:00:00
+    salida TIME NOT NULL                            #16:00:00
+);
+
+CREATE TABLE FUNCIONARIO(
+    id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,     #1
+    rut VARCHAR(10) NOT NULL,                       #12345678-9
+    nombre VARCHAR(30) NOT NULL,                    #JUAN
+    contrasena int NOT NULL,                        #1234
+    fk_area INT,                                    #1
+    fk_tipo_usuario INT,                            #1
+    fk_horario INT,                                 #1
+    CONSTRAINT fk_funcionario_id_area FOREIGN KEY (fk_area) REFERENCES AREA (codigo),
+    CONSTRAINT fk_funcionario_id_tipo_usuario FOREIGN KEY (fk_tipo_usuario) REFERENCES TIPO_USUARIO (id),
+    CONSTRAINT fk_funcionario_id_horario FOREIGN KEY (fk_horario) REFERENCES HORARIO (id)
+);
+
+CREATE TABLE TURNO (
+    id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,     #1
+    fecha DATE NOT NULL,                            #2020-01-01
+    descripcion VARCHAR(50) NOT NULL,               #TURNO 1
+    fk_funcionario INT NOT NULL,                    #1
+    CONSTRAINT fk_turno_id_funcionario FOREIGN KEY (fk_funcionario) REFERENCES FUNCIONARIO (id)
+);
+
+
+# ACTIVIDADES
+
+CREATE TABLE ACTIVIDAD(
+    id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,     #1
+    actividad VARCHAR(50) NOT NULL                  #Cirugía
+);
+
+CREATE TABLE ACCION (
+    id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,     #1
+    accion VARCHAR(50) NOT NULL                     #Realizar
+);
+
+CREATE TABLE REGISTRO (
+    id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,     #1
+    fecha DATE NOT NULL,                            #2020-01-01
+    hora TIME NOT NULL,                             #08:00:00
+    descripcion VARCHAR(50) NOT NULL,               #Realizar Cirugía a Camilla 1 | Sala 1 | Pediatria
+    completado BOOLEAN NOT NULL,                    #TRUE
+    fk_actividad INT,                               #1
+    fk_accion INT,                                  #1
+    fk_area INT,                                    #1
+    fk_sala INT,                                    #1
+    fk_camilla INT,                                 #1
+    CONSTRAINT fk_registro_id_actividad FOREIGN KEY (fk_actividad) REFERENCES ACTIVIDAD (id),
+    CONSTRAINT fk_registro_id_accion FOREIGN KEY (fk_accion) REFERENCES ACCION (id),
+    CONSTRAINT fk_registro_id_area FOREIGN KEY (fk_area) REFERENCES AREA (codigo),
+    CONSTRAINT fk_registro_id_sala FOREIGN KEY (fk_sala) REFERENCES SALA (codigo),
+    CONSTRAINT fk_registro_id_camilla FOREIGN KEY (fk_camilla) REFERENCES CAMILLA (codigo)
+);

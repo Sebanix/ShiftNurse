@@ -7,46 +7,36 @@
         </div>
     </div>
 
-    <div class="pt-4">
+    <div class="pb-4">
         <form method="POST">
             {% csrf_token %}
 
             <div class="form-group mb-2">
-                <label for="password">Número:</label>
-                <input type="number" class="form-control" id="nombre">
-                {% for error in form.numero.errors %}
-                    <div class="invalid-feedback">{{ error }}</div>
-                {% endfor %}
+                <label for="camilla">Camilla:</label>
+                <input type="text" class="form-control" id="camilla" name="camilla" value="{{ form.data.camilla }}">
             </div>
 
             <div class="form-group mb-2">
-                <label for="estacion">Estación:</label>
-                <select class="custom-select form-control" id="estacion">
-                    <option value="-1" selected>Seleccione...</option>
-                    {% for area in areas %}
-                    <option value="{{ area.id }}">{{ area.name }}</option>
-                    {% endfor %}
-                </select>
-                {% for error in form.estacion.errors %}
-                    <div class="invalid-feedback">{{ error }}</div>
-                {% endfor %}
+                <label for="leyenda">Leyenda:</label>
+                <input type="text" class="form-control" id="leyenda" name="leyenda" value="{{ form.data.leyenda }}">
             </div>
 
+
             <div class="form-group mb-5">
-                <label for="sala">Sala:</label>
-                <select class="custom-select form-control" id="sala">
-                    <option value="-1" selected>Seleccione...</option>
+                <label for="fk_sala">Sala:</label>
+                <select class="custom-select form-control" id="fk_sala" name="fk_sala" >
+                    <option value="-1" {% if not form.data.fk_sala %} selected {% endif %}>Seleccione...</option>
                     {% for sala in salas %}
-                        <option value="{{ sala.id }}">{{ sala }}</option>
+
+                        <option value="{{ sala.codigo }}"
+                        {% if form.data.fk_sala == sala.codigo %} selected {% endif %}
+                        >{{ sala.sala }}</option>
                     {% endfor %}
                 </select>
-                {% for error in form.sala.errors %}
-                    <div class="invalid-feedback">{{ error }}</div>
-                {% endfor %}
             </div>
 
             <div class="text-center mb-5 only-btn">
-                <a href="{% url 'dashboard' %}" class="btn btn-primary primary-bg">Guardar</a>
+                <input class="btn btn-primary primary-bg" type="submit" value="Guardar">
             </div>
         </form>
     </div>
@@ -66,18 +56,16 @@
             </tr>
             </thead>
             <tbody>
-            {% for camilla in camillas %}
+           {% for camilla in camillas %}
                 <tr>
-                    <td colspan="6">{{ camilla }}</td>
-                    <td><a class="fas fa-edit text-warning"></a></td>
-                    <td><a class="fas fa-trash text-danger"></a></td>
+                    <td colspan="6">[ {{ camilla.leyenda }} ] {{ camilla.camilla }} | {{ camilla.sala }} </td>
+                    <td><a href="/camilla?codigo={{ camilla.codigo }}" class="fas fa-edit text-warning"></a></td>
+                    <td><a href="/camilla?delete={{ camilla.codigo }}" class="fas fa-trash text-danger"></a></td>
                 </tr>
             {% endfor %}
             </tbody>
         </table>
 
     </div>
-
-
 
 {% endblock %}

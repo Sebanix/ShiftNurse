@@ -11,15 +11,19 @@
         <form method="POST">
             {% csrf_token %}
 
-            <div class="form-group mb-5">
-                <label for="password">Nombre:</label>
-                <input type="text" class="form-control" id="nombre">
-                {% for error in form.nombre.errors %}
-                    <div class="invalid-feedback">{{ error }}</div>
-                {% endfor %}
+            <div class="form-group mb-2">
+                <label for="area">Area:</label>
+                <input type="text" class="form-control" id="area" name="area" value="{{ form.data.area }}">
             </div>
+
+            <div class="form-group mb-5">
+                <label for="leyenda">Leyenda:</label>
+                <input type="text" class="form-control" id="leyenda" name="leyenda" value="{{ form.data.leyenda }}">
+            </div>
+
+
             <div class="text-center mb-5 only-btn">
-                <a href="{% url 'dashboard' %}" class="btn btn-primary primary-bg">Guardar</a>
+                <input class="btn btn-primary primary-bg" type="submit" value="Guardar">
             </div>
         </form>
     </div>
@@ -41,9 +45,9 @@
             <tbody>
             {% for area in areas %}
                 <tr>
-                    <td colspan="6">{{ area.name }}</td>
-                    <td><a class="fas fa-edit text-warning"></a></td>
-                    <td><a class="fas fa-trash text-danger"></a></td>
+                    <td colspan="6">[ {{ area.leyenda }} ] {{ area.area }}</td>
+                    <td><a href="/estacion?codigo={{ area.codigo }}" class="fas fa-edit text-warning"></a></td>
+                    <td><a href="/estacion?delete={{ area.codigo }}" class="fas fa-trash text-danger"></a></td>
                 </tr>
             {% endfor %}
             </tbody>

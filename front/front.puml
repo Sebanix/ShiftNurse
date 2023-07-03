@@ -1,7 +1,0 @@
-@startuml
-class Estacion{
-    id: int
-    nombre: str
-
-    }
-@enduml

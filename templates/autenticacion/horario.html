@@ -13,16 +13,10 @@
             <div class="form-group mb-2">
                 <label for="entrada">Entrada:</label>
                 <input type="time" class="form-control" id="entrada">
-                {% for error in form.entrada.errors %}
-                    <div class="invalid-feedback">{{ error }}</div>
-                {% endfor %}
             </div>
             <div class="form-group mb-5">
                 <label for="salida">Salida:</label>
                 <input type="time" class="form-control" id="salida">
-                {% for error in form.salida.errors %}
-                    <div class="invalid-feedback">{{ error }}</div>
-                {% endfor %}
             </div>
 
             <div class="text-center mb-5 only-btn">

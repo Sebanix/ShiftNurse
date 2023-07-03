@@ -23,12 +23,12 @@
             </thead>
             <tbody>
             <tr>
-                <td colspan="6">Sebastián Astudillo</td>
+                <td colspan="6">Sebastian Astudillo</td>
                 <td><a class="fas fa-edit text-warning"></a></td>
                 <td><a class="fas fa-trash text-danger"></a></td>
             </tr>
             <tr>
-                <td colspan="6">Simón Gallegos</td>
+                <td colspan="6">Sebastian Pizarro</td>
                 <td><a class="fas fa-edit text-warning"></a></td>
                 <td><a class="fas fa-trash text-danger"></a></td>
             </tr>
@@ -44,14 +44,14 @@
             <div class="form-group rut-container mb-2">
                 <div class="rut-input">
                     <label for="rut">RUT:</label>
-                    <input type="text" class="form-control" id="rut" name="rut" maxlength="8" required>
+                    <input type="text" class="form-control" id="rut" maxlength="8" required>
                     {% for error in form.rut.errors %}
                         <div class="invalid-feedback">{{ error }}</div>
                     {% endfor %}
                 </div>
                 <div class="rut-dv">
-                    <label for="dv"> </label>
-                    <input type="text" class="form-control" id="dv" name="dv" maxlength="1" required>
+                    <label for="dv">-</label>
+                    <input type="text" class="form-control" id="dv" maxlength="1" required>
                 </div>
             </div>
 
