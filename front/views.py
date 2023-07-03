@@ -99,7 +99,6 @@ def areas_estacion(request):
 
         if response.status_code == 200:
 
-            # modificar form para que tenga los datos de response
             area: Area = response.json()
 
             form.data = area
@@ -182,7 +181,6 @@ def areas_salas(request):
 
         if response.status_code == 200:
 
-            # modificar form para que tenga los datos de response
             sala: Sala = response.json()
 
             form.data = sala
@@ -273,7 +271,6 @@ def areas_camillas(request):
 
         if response.status_code == 200:
 
-            # modificar form para que tenga los datos de response
             camilla: Camilla = response.json()
 
             form.data = camilla
